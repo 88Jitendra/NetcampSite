@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,td,th {
+	font-size: 14px;
+	font-family: Georgia;
+	color: #FFFFFF;
+}
+
+		
+body {background:#000;
+      margin:0;
+	  scrollbar-3dlight-color:#222;
+      scrollbar-arrow-color:#FFF;
+      scrollbar-base-color:#000;
+      scrollbar-darkshadow-color:#222;
+      scrollbar-face-color:#000;
+      scrollbar-highlight-color:#000;
+      scrollbar-shadow-color:#000}
+	  
+a:link {
+	color: #aa0000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #aa0000;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FF0000;
+}
+a:active {
+	text-decoration: none;
+}
+.wrapper
+{
+width:100%;
+
+}
+
+.login
+{
+width:100px;
+height:15px;
+padding-top:4px;
+font-weight:100;
+text-align:center;
+color:#b31c00;
+background-color:#fcef85;
+font-family:Georgia;
+font-size:12px;
+border:0px #FFA900 inset;
+
+}
+
+h2
+{
+font-family:"Trebuchet MS";
+font-size:16px;
+
+}
+
+.k
+{
+font-family:Georgia;
+font-size:20px;
+text-transform:lowercase;
+font-weight:300;
+}
+
+#greet
+{
+font-family:Georgia;
+text-transform:lowercase;
+font-weight:300;
+text-align:left;
+}
+
+.solved 
+{
+color:#B5EE66;
+}
+
+.unsolved 
+{
+}

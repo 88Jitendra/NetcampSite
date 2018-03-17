@@ -1,0 +1,93 @@
+//javascript document 
+// author Rohit Kalhans
+var movement= new Array(169,150,130,100,80,50,40,30,25,20);
+var spons=new Array("ngma.png","ngma.png","ngma.png");
+function sponsanim()
+{
+	document.getElementById('sponsors').style.background='url(images/ngma.png) center 20px no-repeat';
+	refreshlb();
+	
+}
+
+function createRequestObject()
+{
+	var xmlhttp=false;
+	try
+	{
+		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+	}
+	catch (e)
+		{
+		try 
+			{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} 
+		catch (E) 
+			{
+			xmlhttp = false;
+			}
+		}
+	if (!xmlhttp && typeof XMLHttpRequest!='undefined')
+		{
+			xmlhttp = new XMLHttpRequest();
+		}
+	return xmlhttp;
+}
+function getPage(page,div,waitdiv,loadimage,p1,p2,p3,p4,p5,refresh)/*five parameters from p1 to p5 boolean refresh */
+{
+	if(waitdiv!='')
+	{
+		document.getElementById(waitdiv).style.background='url(\''+loadimage+'\') center center no-repeat';
+	}
+		var request = createRequestObject();
+	tout=setTimeout(function()
+		{
+			request.abort()
+		},20000);
+	var parms = "?p1="+p1+"&p2="+p2+"&p3="+p3+"&p4="+p4+"&p5="+p5;
+	request.open('GET', page+parms, true);
+	request.onreadystatechange = function()
+	{
+		if(request.readyState == 4)
+		{
+			if(waitdiv!='')
+			{
+				document.getElementById(waitdiv).style.background='url()';
+			}
+			if(request.status == 200 || request.status==300)
+			{
+				var f=false;
+				var response = request.responseText;
+				if(response.substring(0,1)=='_')
+				{
+					response=response.substring(1,response.length);
+					f=true;
+				}
+				document.getElementById(div).innerHTML= response;
+				clearTimeout(tout);
+				if(refresh)
+				{
+					refreshall(f);
+				}
+			}
+			else
+			{
+				request.abort();
+			}
+		}
+	}
+	request.send(null); 
+}
+function refreshall(f)
+{
+	getPage('problems.php','prob','prob','images/loading.gif','','','','','',false);
+	getPage('leaderb.php','leaderb','leaderb','images/loading.gif','','','','','',false);
+	if(!f)
+	getPage('problemstatement.php','pstatement','pstatement','images/loading.gif','','','','','',false);
+	
+	}
+function refreshlb()
+{		
+		getPage('leaderb.php','leaderb','leaderb','images/loading.gif','','','','','',false);
+
+}
